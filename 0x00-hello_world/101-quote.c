@@ -1,9 +1,8 @@
-#include <stdio.h>
 #include <unistd.h>
+#include <stdio.h>
 /**
- * main - entry point
- * Description: the program writes to stderr.
- * Return: value 1 on success.
+ *main - function
+ *Return: valve 0
  */
 int main(void)
 {
