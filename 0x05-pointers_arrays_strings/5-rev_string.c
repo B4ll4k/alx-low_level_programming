@@ -10,12 +10,12 @@ void rev_string(char *s)
 {
 	int i;
 	int j = 0;
-	char *strr = (char *) malloc (strlen(s) * sizeof(char));
+	char *strr = (char *) malloc(strlen(s) * sizeof(char));
 
 	for (i = strlen(s) - 1; i >= 0; i--)
 	{
 		strr[j] = s[i];
 		j++;
 	}
-	s = strr;
+	strcpy(s, strr);
 }
