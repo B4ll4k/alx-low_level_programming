@@ -1,19 +1,21 @@
 #include "lists.h"
 /**
- * listint_len - this function returns the number of a element
- * in a linked list
- * @h: the pointer that points to the struct.
- *
- * Return: the number of elements
+ * listint_len - Entry Point
+ * @h: head
+ * Return: 0
  */
 size_t listint_len(const listint_t *h)
 {
-	int counter = 0;
+	int count = 0;
 
-	while (h != '\0')
+	if (h == NULL)
+		return (0);
+
+	while (h != NULL)
 	{
+		count++;
 		h = h->next;
-		counter++;
 	}
-	return (counter);
+
+	return (count);
 }
