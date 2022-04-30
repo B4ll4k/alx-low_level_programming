@@ -1,33 +1,24 @@
 #include "holberton.h"
 /**
- * print_binary - Entry Point
- * @n: dec input
- * Return: 0
- */
+  *print_binary - prints the binary representation of a number.
+  *@n: unsigned long int to be converted.
+  *
+  *Return: void.
+  */
 void print_binary(unsigned long int n)
 {
-	int i = 0, count, k, temp;
+	unsigned long int mask;
 
 	if (n == 0)
 	{
-		printf("0");
-		return;
+		_putchar('0');
 	}
-
-	temp = n;
-
-	while (temp != 0)
+	else
 	{
-		i++;
-		temp = temp >> 1;
-	}
-
-	for (count = i - 1; count >= 0; count--)
-	{
-		k = n >> count;
-		if (k & 1)
-			printf("1");
-		else
-			printf("0");
+		mask = n & 1;
+		n = n >> 1;
+		if (!(n == 0))
+			print_binary(n);
+		_putchar(mask + '0');
 	}
 }
