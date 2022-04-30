@@ -1,15 +1,18 @@
-#include "bootcamp.h"
+#include "holberton.h"
+
 /**
- * get_endianness - finds endianness type
- * Return: 0 if big endian, 1 if little endian
+ * get_endianness - checks the endianness of the system.
+ *
+ * Return: 0 if big endian, 1 if little endian.
  */
+
 int get_endianness(void)
 {
-	unsigned int i = 1;
-	char *c = (char *)&i;
+	int x = 1;
+	char *ptr = (char *)&x;
 
-	if (*c)
+	if (*ptr == 1)
 		return (1);
-	else
-		return (0);
+
+	return (0);
 }

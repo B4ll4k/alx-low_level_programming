@@ -1,17 +1,23 @@
-#include "bootcamp.h"
+#include "holberton.h"
+
 /**
- * set_bit - sets value of bit to 1 at given index
- * @n: pointer to unsigned int
- * @index: index value to be converted to 1
- * Return: 1 on success, -1 on error
+ * set_bit - sets the value of a bit to 1 at a given index.
+ * @n: pointer to number on which a bit will be set to 1.
+ * @index: index of the bit to be set
+ *
+ * Return: 1 if it worked, or -1 if an error occurred.
  */
+
 int set_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned long int changenum = 1;
+	unsigned long int mask = 1;
 
 	if (index > (sizeof(unsigned long int) * 8))
 		return (-1);
-	changenum <<= index;
-	*n = *n | changenum;
+
+	mask = mask << index;
+
+	*n = *n | mask;
+
 	return (1);
 }

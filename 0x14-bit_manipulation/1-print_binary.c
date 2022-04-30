@@ -1,16 +1,25 @@
-#include "bootcamp.h"
+#include "holberton.h"
+
 /**
- * print_binary - prints binary representation of a number
- * @n: input number to be converted to binary
- * Return: void
+ * print_binary - prints the binary representation of a number.
+ * @n: decimal number to be represented as binary.
+ *
+ * Return: void.
  */
+
 void print_binary(unsigned long int n)
 {
-	unsigned long int copy = n;
-	int index = 0;
+	int count = 0;
+	unsigned long int res = n;
 
-	while ((copy >>= 1) > 0)
-		index++;
-	while (index >= 0)
-		_putchar((n >> index--) & 1 ? '1' : '0');
+	while ((res >> 1) > 0)
+	{
+		count++;
+		res = res >> 1;
+	}
+
+	res = n;
+	while (count > 0)
+		_putchar(((res >> count--) & 1) + '0');
+	_putchar((res & 1) + '0');
 }
