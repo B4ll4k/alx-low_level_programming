@@ -1,5 +1,3 @@
-#include "holberton.h"
-
 /**
  * set_bit - sets the value of a bit to 1 at a given index.
  * @n: pointer to number on which a bit will be set to 1.

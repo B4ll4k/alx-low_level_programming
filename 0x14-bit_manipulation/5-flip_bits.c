@@ -1,5 +1,3 @@
-#include "holberton.h"
-
 /**
  * flip_bits - finds the number of bits needed to flip to get
  *             from one number to another.

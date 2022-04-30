@@ -1,5 +1,3 @@
-#include "holberton.h"
-
 /**
  * get_endianness - checks the endianness of the system.
  *

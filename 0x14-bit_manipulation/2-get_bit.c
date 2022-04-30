@@ -1,5 +1,3 @@
-#include "holberton.h"
-
 /**
  * get_bit - gets the value of a bit at a given index.
  * @n: number from which bits are going to be obtained.
