@@ -1,3 +1,4 @@
+#include "bit.h"
 /**
   *get_endianness - determines the endianness of a machine.
   *
