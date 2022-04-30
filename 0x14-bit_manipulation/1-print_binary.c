@@ -1,23 +1,24 @@
+#include "main.h"
 /**
- * print_binary - prints the binary representation of a number.
- * @n: decimal number to be represented as binary.
- *
- * Return: void.
- */
-
+  *print_binary - prints the binary representation of a number.
+  *@n: unsigned long int to be converted.
+  *
+  *Return: void.
+  */
 void print_binary(unsigned long int n)
 {
-	int count = 0;
-	unsigned long int res = n;
+	unsigned long int mask;
 
-	while ((res >> 1) > 0)
+	if (n == 0)
 	{
-		count++;
-		res = res >> 1;
+		_putchar('0');
 	}
-
-	res = n;
-	while (count > 0)
-		_putchar(((res >> count--) & 1) + '0');
-	_putchar((res & 1) + '0');
+	else
+	{
+		mask = n & 1;
+		n = n >> 1;
+		if (!(n == 0))
+			print_binary(n);
+		_putchar(mask + '0');
+	}
 }

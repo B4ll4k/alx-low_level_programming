@@ -1,67 +1,73 @@
+#include "main.h"
 /**
- * binary_to_uint - converts a binary number to an unsigned int.
- * @b: pointer to a string of 0 and 1 chars.
- *
- * Return: the converted number, or 0 if
- *         1) there is one or more chars in the string b that is not 0 or 1.
- *         2) b is NULL.
- */
-
-unsigned int binary_to_uint(const char *b)
+  *_strlen - returns the length of a string.
+  *@s: pointer to string.
+  *
+  *Return: length.
+  */
+unsigned int _strlen(const char *s)
 {
-	int last_idx = -1, first_idx = -1;
-	int i = 0, base_pow = 1;
-	unsigned int dec_num = 0;
+	unsigned int i;
 
-	if (b == (void *)0)
-		return (0);
-
-	last_idx = is_bin(b, &first_idx);
-	if (last_idx == -1)
-		return (0);
-
-	if ((last_idx - first_idx + 1) > (int)(sizeof(unsigned int) * 8))
-		return (0);
-
-	i = last_idx;
-	while (i >= first_idx)
+	i = 0;
+	while (s[i] != '\0')
 	{
-		dec_num = dec_num + ((b[i] - '0') * base_pow);
-		i--;
-		base_pow = base_pow * 2;
+		i++;
 	}
-
-	return (dec_num);
+	return (i);
 }
 
+/**
+  *getp - returns the value of x to the power of y.
+  *@x: number.
+  *@y: power.
+  *
+  *Return: x to the pow of y.
+  *0 if x < 0.
+  */
+int getp(int x, int y)
+{
+	if (y < 0)
+		return (0);
+	if (y == 0)
+		return (1);
+	if (y == 1)
+		return (x);
+
+	return (x * getp(x, y - 1));
+}
 
 /**
- * is_bin - checks a string for all of its chars to be either 0 or 1.
- * @b: pointer to a string of 0 and 1 chars.
- * @first: int pointer whose pointing value is to be set at the index
- *         of the first "1" found in b.
- *
- * Return: index of the last binary char in b, or -1 if a char different than
- *         0 or 1 is found.
- */
-
-int is_bin(const char *b, int *first)
+  *binary_to_uint - converts a binary number to an unsigned int.
+  *@b: pointer to string containing 0 and 1.
+  *
+  *Return: converted number or 0 if b is null or has chars not 0 or 1.
+  */
+unsigned int binary_to_uint(const char *b)
 {
-	int count = 0;
+	unsigned int num, length, index;
+	int power;
 
-	*first = -1;
-	while (*b != '\0')
+	if (!b)
+		return (0);
+
+	length = _strlen(b);
+	power = 0;
+	num = 0;
+	index = length - 1;
+	while (length > 0)
 	{
-		if (*b < '0' || *b > '1')
-			return (-1);
-
-		if (*first == -1 && *b != '0')
-			*first = count;
-
-		b++;
-		count++;
+		if (b[index] == 48 || b[index] == 49)
+		{
+			num = num + ((b[index] - 48) * getp(2, power));
+			power++;
+			index--;
+			length--;
+		}
+		else
+		{
+			return (0);
+		}
 	}
-
-	count--;
-	return (count);
+	return (num);
 }
